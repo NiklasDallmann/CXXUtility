@@ -72,33 +72,3 @@ install(EXPORT									${CXXUTILITY_TARGETS}
 		FILE									"cxxutility-config.cmake")
 
 include(CPack)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
