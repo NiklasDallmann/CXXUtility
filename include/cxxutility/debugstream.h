@@ -47,10 +47,10 @@ DebugStream &operator<<(DebugStream &debug, const T &t)
 
 } // namespace CXXUtility
 
-#define debugLog		Utility::DebugStream() << "DEBUG	"
-#define warningLog		Utility::DebugStream() << Utility::DebugStream::yellow << "WARN	" << Utility::DebugStream::standard
-#define errorLog		Utility::DebugStream() << Utility::DebugStream::red << "ERROR	" << Utility::DebugStream::standard
-#define traceLog		Utility::DebugStream() << Utility::DebugStream::magenta << "TRACE	" << Utility::DebugStream::standard
-#define infoLog			Utility::DebugStream() << Utility::DebugStream::cyan << "INFO	" << Utility::DebugStream::standard
+#define debugLog		CXXUtility::DebugStream() << "DEBUG	"
+#define warningLog		CXXUtility::DebugStream() << CXXUtility::DebugStream::yellow << "WARN	" << CXXUtility::DebugStream::standard
+#define errorLog		CXXUtility::DebugStream() << CXXUtility::DebugStream::red << "ERROR	" << CXXUtility::DebugStream::standard
+#define traceLog		CXXUtility::DebugStream() << CXXUtility::DebugStream::magenta << "TRACE	" << CXXUtility::DebugStream::standard
+#define infoLog			CXXUtility::DebugStream() << CXXUtility::DebugStream::cyan << "INFO	" << CXXUtility::DebugStream::standard
 
 #endif // DEBUGSTREAM_H

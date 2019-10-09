@@ -22,7 +22,7 @@ set(CMAKE_INSTALL_RPATH							${CMAKE_INSTALL_PREFIX}/lib/toypt)
 
 set(CXXUTILITY_PUBLIC_HEADERS
 	"include/cxxutility/debugstream.h"
-	"include/cxxutility/globals.h")
+	"include/cxxutility/definitions.h")
  
 set(CXXUTILITY_SOURCES
 	"src/debugstream.cpp")

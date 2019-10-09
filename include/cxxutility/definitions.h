@@ -1,5 +1,5 @@
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef DEFINITIONS_H
+#define DEFINITIONS_H
 
 #ifdef __NVCC__
 	#define HOST_DEVICE __host__ __device__
@@ -7,4 +7,4 @@
 	#define HOST_DEVICE
 #endif
 
-#endif // GLOBALS_H
+#endif // DEFINITIONS_H
