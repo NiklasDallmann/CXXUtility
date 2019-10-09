@@ -1,6 +1,6 @@
 #include "debugstream.h"
 
-namespace Utility
+namespace CXXUtility
 {
 
 const std::string DebugStream::standard			= "\x1B[0m";

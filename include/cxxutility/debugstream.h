@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-namespace Utility
+namespace CXXUtility
 {
 
 class DebugStream
@@ -45,7 +45,7 @@ DebugStream &operator<<(DebugStream &debug, const T &t)
 	return debug.insert(t);
 }
 
-} // namespace Utility
+} // namespace CXXUtility
 
 #define debugLog		Utility::DebugStream() << "DEBUG	"
 #define warningLog		Utility::DebugStream() << Utility::DebugStream::yellow << "WARN	" << Utility::DebugStream::standard
