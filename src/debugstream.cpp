@@ -18,7 +18,10 @@ DebugStream::DebugStream()
 DebugStream::~DebugStream()
 {
 	*this << standard << "\n";
+	
+	auto flags = std::cout.flags();
 	std::cout << this->_stream.str();
+	std::cout.setf(flags);
 }
 
 }

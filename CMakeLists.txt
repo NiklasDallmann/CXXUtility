@@ -22,10 +22,13 @@ set(CMAKE_INSTALL_RPATH							${CMAKE_INSTALL_PREFIX}/lib/toypt)
 
 set(CXXUTILITY_PUBLIC_HEADERS
 	"include/cxxutility/debugstream.h"
-	"include/cxxutility/definitions.h")
+	"include/cxxutility/definitions.h"
+	"include/cxxutility/test.h"
+	"include/cxxutility/sfinae.h")
  
 set(CXXUTILITY_SOURCES
-	"src/debugstream.cpp")
+	"src/debugstream.cpp"
+	"src/test.cpp")
 
 set(CXXUTILITY_LIBRARY_DESTINATION				"${CMAKE_INSTALL_PREFIX}/lib")
 set(CXXUTILITY_HEADER_DESTINATION				"${CMAKE_INSTALL_PREFIX}/include/cxxutility")
@@ -47,8 +50,8 @@ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY			"C++ utility library")
 set(CPACK_PACKAGE_VERSION_MAJOR					${PROJECT_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR					${PROJECT_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH					${PROJECT_VERSION_PATCH})
-#set(CPACK_RESOURCE_FILE_LICENSE					"${CMAKE_CURRENT_SOURCE_DIR}/LICENCE")
-#set(CPACK_RESOURCE_FILE_README					"${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+set(CPACK_RESOURCE_FILE_LICENSE					"${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(CPACK_RESOURCE_FILE_README					"${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_SOURCE_GENERATOR						"TGZ")
 set(CPACK_SOURCE_IGNORE_FILES
 	"/.git"
