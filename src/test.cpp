@@ -6,18 +6,18 @@
 namespace CXXUtility
 {
 
-Test::Test(const std::string_view name) :
+TestSuite::TestSuite(const std::string_view name) :
 	_name(name)
 {
 	this->_startTest();
 }
 
-Test::~Test()
+TestSuite::~TestSuite()
 {
 	this->_endTest();
 }
 
-void Test::_startTest()
+void TestSuite::_startTest()
 {
 	DebugStream stream;
 	
@@ -26,7 +26,7 @@ void Test::_startTest()
 	stream << "+" << std::right << std::setfill('-') << std::setw(78) << "-+";
 }
 
-void Test::_endTest()
+void TestSuite::_endTest()
 {
 	DebugStream stream;
 	

@@ -20,7 +20,7 @@ namespace CXXUtility
 /// 
 /// \since	0.2.0
 ///
-class Test
+class TestSuite
 {
 public:
 	///
@@ -28,14 +28,14 @@ public:
 	/// 
 	/// \since	0.2.0
 	///
-	Test(const std::string_view name);
+	TestSuite(const std::string_view name);
 	
 	///
 	/// Destructs the object.
 	/// 
 	/// \since	0.2.0
 	///
-	virtual ~Test();
+	virtual ~TestSuite();
 	
 	///
 	/// Contains and runs all test cases. This method must be reimplemented by deriving types, i.e. all tests.
@@ -44,8 +44,9 @@ public:
 	///
 	virtual void operator()() = 0;
 	
-private:
+protected:
 	std::string_view _name;
+	std::string_view _currentTestName;
 	
 	void _startTest();
 	void _endTest();
@@ -56,16 +57,27 @@ private:
 /// 
 /// \since	0.2.0
 ///
-#define TEST(name) \
-class name : public CXXUtility::Test \
+#define TEST_SUITE(name) \
+class name : public CXXUtility::TestSuite \
 { \
 public: \
-	name() : CXXUtility::Test(#name) \
+	name() : CXXUtility::TestSuite(#name) \
 	{ \
 	} \
 	virtual void operator()() override; \
 }; \
+ \
+int main() \
+{ \
+	name()(); \
+	return 0; \
+} \
+ \
 void name::operator()()
+
+#define TEST(name) \
+this->_currentTestName = #name;
+
 
 inline DebugStream &success(DebugStream &&debug)
 {
@@ -134,6 +146,12 @@ inline void runBenchmark(Function f, const size_t numberOfCycles, const size_t d
 								std::setfill(' ') << std::right << std::setw(DebugStream::fillWidth * 2u) << "BANDWIDTH" <<
 								std::setfill(' ') << std::left << std::setw(DebugStream::fillWidth) << ": " << bandwidth << " MB/s";
 }
+
+#define CXX_COMPARE(actual, expected, tag) \
+CXXUtility::compare(actual, expected, this->_currentTestName, tag)
+
+#define CXX_BENCHMARK(f, numberOfCycles, dataSize, tag) \
+CXXUtility::runBenchmark(f, numberOfCycles, dataSize, this->_currentTestName, tag)
 
 } // namespace CXXUtility
 
