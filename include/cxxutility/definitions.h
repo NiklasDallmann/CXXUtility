@@ -1,7 +1,22 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
-#ifdef __NVCC__
+#define CXX_UNUSED(x) \
+void(x)
+
+#if defined(__clang__)
+#define CXX_CLANG __clang_version__
+#endif
+
+#if defined(__GNUC__)
+#define CXX_GCC (__GNUC__ * 10 + __GNUC_MINOR__)
+#endif
+
+#if defined(__NVCC__)
+#define CXX_NVCC
+#endif
+
+#ifdef CXX_NVCC
 	#define HOST_DEVICE __host__ __device__
 #else
 	///
@@ -15,15 +30,36 @@
 	#define HOST_DEVICE
 #endif
 
-#define CXX_UNUSED(x) \
-void(x)
-
-#if defined(__clang__)
-#define CXX_CLANG __clang_version__
+#ifdef __SSE__
+#define CXX_SSE
 #endif
 
-#if defined(__GNUC__)
-#define CXX_GCC (__GNUC__ * 10 + __GNUC_MINOR__)
+#ifdef __SSE2__
+#define CXX_SSE2
+#endif
+
+#ifdef __SSE3__
+#define CXX_SSE3
+#endif
+
+#ifdef __SSE4_1__
+#define CXX_SSE4_1
+#endif
+
+#ifdef __SSE4_2__
+#define CXX_SSE4_2
+#endif
+
+#ifdef __FMA__
+#define CXX_FMA
+#endif
+
+#ifdef __AVX__
+#define CXX_AVX
+#endif
+
+#ifdef __AVX2__
+#define CXX_AVX2
 #endif
 
 #endif // DEFINITIONS_H
