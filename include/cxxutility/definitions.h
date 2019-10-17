@@ -30,6 +30,7 @@ void(x)
 	#define HOST_DEVICE
 #endif
 
+#ifndef CXX_NVCC
 #ifdef __SSE__
 #define CXX_SSE
 #endif
@@ -61,5 +62,6 @@ void(x)
 #ifdef __AVX2__
 #define CXX_AVX2
 #endif
+#endif // ifndef CXX_NVCC
 
 #endif // DEFINITIONS_H
