@@ -7,8 +7,8 @@
 #include <stddef.h>
 #include <string>
 
-#include "definitions.h"
-#include "sfinae.h"
+#include "cxxutility/definitions.h"
+#include "cxxutility/sfinae.h"
 
 #if defined(CXX_GCC) || defined(CXX_CLANG)
 #include <cxxabi.h>
@@ -16,7 +16,7 @@
 
 ///
 /// Top level namespace for the CXXUtility library.
-/// 
+///
 /// \since	0.1.0
 ///
 namespace CXXUtility
@@ -24,9 +24,9 @@ namespace CXXUtility
 
 ///
 /// Implements a thread-safe debug stream.
-/// 
+///
 /// This implementation is compatible with all types that implement `operator<<` for `std::stringstream`.
-/// 
+///
 /// \since	0.1.0
 ///
 class DebugStream
@@ -39,26 +39,26 @@ public:
 	static const std::string green;
 	static const std::string magenta;
 	static const std::string cyan;
-	
+
 	static constexpr uint32_t fillWidth = 10u;
-	
+
 	///
 	/// Constructs a DebugStream. The constructed object may immediately used to print output.
-	/// 
+	///
 	/// \since	0.1.0
 	///
 	DebugStream();
-	
+
 	///
 	/// Destructs the object and prints the content to `std::cout`.
-	/// 
+	///
 	/// \since	0.1.0
 	///
 	~DebugStream();
-	
+
 	///
 	/// Appends \a t to the internal buffer.
-	/// 
+	///
 	/// \since	0.1.0
 	///
 	template <typename T>
@@ -72,37 +72,37 @@ public:
 		{
 			this->_stream << this->_typeName<T>() << "()";
 		}
-		
+
 		return *this;
 	}
-	
+
 private:
 	std::stringstream _stream;
-	
+
 	template <typename T>
 	std::string _typeName()
 	{
 		std::string returnValue;
-		
+
 #if defined(CXX_GCC) || defined(CXX_CLANG)
 		size_t length = 0;
 		int status = 0;
 		char *name = abi::__cxa_demangle(typeid(T).name(), nullptr, &length, &status);
-		
+
 		returnValue = std::string(name, length);
-		
+
 		free(name);
 #else
 		returnValue = typeid(T).name();
 #endif
-		
+
 		return returnValue;
 	}
 };
 
 ///
 /// Inserts \a t into \a debug.
-/// 
+///
 /// \since	0.1.0
 ///
 template <typename T>
@@ -153,18 +153,18 @@ inline DebugStream &info(DebugStream &&debug)
 } // namespace CXXUtility
 
 #define cxxdebug \
-debug(CXXUtility::DebugStream())
+CXXUtility::debug(CXXUtility::DebugStream())
 
 #define cxxwarning \
-warning(CXXUtility::DebugStream())
+CXXUtility::warning(CXXUtility::DebugStream())
 
 #define cxxerror \
-error(CXXUtility::DebugStream())
+CXXUtility::error(CXXUtility::DebugStream())
 
 #define cxxtrace \
-trace(CXXUtility::DebugStream())
+CXXUtility::trace(CXXUtility::DebugStream())
 
 #define cxxinfo \
-info(CXXUtility::DebugStream())
+CXXUtility::info(CXXUtility::DebugStream())
 
 #endif // DEBUGSTREAM_H

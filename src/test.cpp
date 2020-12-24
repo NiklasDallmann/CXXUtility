@@ -1,7 +1,7 @@
 #include <typeinfo>
 #include <iomanip>
 
-#include "test.h"
+#include "cxxutility/test.h"
 
 namespace CXXUtility
 {
@@ -20,7 +20,7 @@ TestSuite::~TestSuite()
 void TestSuite::_startTest()
 {
 	DebugStream stream;
-	
+
 	stream << "+" << std::right << std::setfill('-') << std::setw(79) << "+\n";
 	stream << "| " << std::left << std::setfill(' ') << std::setw(76) << this->_name << "|\n";
 	stream << "+" << std::right << std::setfill('-') << std::setw(78) << "-+";
@@ -29,7 +29,7 @@ void TestSuite::_startTest()
 void TestSuite::_endTest()
 {
 	DebugStream stream;
-	
+
 	stream << "+" << std::right << std::setfill('-') << std::setw(78) << "-+";
 }
 

@@ -1,4 +1,4 @@
-#include "debugstream.h"
+#include "cxxutility/debugstream.h"
 
 namespace CXXUtility
 {
@@ -18,9 +18,10 @@ DebugStream::DebugStream()
 DebugStream::~DebugStream()
 {
 	*this << standard << "\n";
-	
+
 	auto flags = std::cout.flags();
 	std::cout << this->_stream.str();
+	std::cout.flush();
 	std::cout.setf(flags);
 }
 
